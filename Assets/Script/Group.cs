@@ -7,6 +7,7 @@ public class Group : MonoBehaviour {
     float lastfall = 0f;
     public Spawn spawn;
     public int change;
+    public float level;
 
     bool isValidGridPos ()
     {
@@ -46,6 +47,19 @@ public class Group : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Grid.line <= 10)
+            level = 1f;
+        else if (Grid.line > 10 && Grid.line <= 20)
+            level = 0.9f;
+        else if (Grid.line > 20 && Grid.line <= 30)
+            level = 0.8f;
+        else if (Grid.line > 30 && Grid.line <= 40)
+            level = 0.7f;
+        else if (Grid.line > 40 && Grid.line <= 50)
+            level = 0.6f;
+        else 
+            level = 0.5f;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += new Vector3(-1, 0, 0);
@@ -70,7 +84,7 @@ public class Group : MonoBehaviour {
             else
                 transform.Rotate(0, 0, 90);
         }
-        else if (Input.GetKey(KeyCode.DownArrow) || Time.time - lastfall >= 1) 
+        else if (Input.GetKey(KeyCode.DownArrow) || Time.time - lastfall >= level) 
         {
             transform.position += new Vector3(0, -1, 0);
 

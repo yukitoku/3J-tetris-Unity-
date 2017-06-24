@@ -7,6 +7,7 @@ public class Spawn : MonoBehaviour {
     public GameObject[] groups = new GameObject[7];
     public GameObject[] nextmino = new GameObject[7];
     public int[] next = new int[5];
+    public bool flag;
     public int now;
     public int nextnum;
 
@@ -19,7 +20,26 @@ public class Spawn : MonoBehaviour {
         {
             if (next[num] > 10)
             {
+                if (num == 0)
+                {
+                    next[0] = Random.Range(2, 7);
+                    num++;
+                }
+
                 int i = Random.Range(0, 7);
+                while (flag)
+                {
+                    flag = false;
+                    i = Random.Range(0, 7);
+                    for (int a = 0; a < num; a++)
+                    {
+                        if (i == next[a])
+                        {
+                            i = Random.Range(0, 7);
+                            flag = true;
+                        }
+                    }
+                }
                 next[num] = i;
             }
         }

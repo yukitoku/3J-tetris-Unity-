@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Grid : MonoBehaviour {
 
     public static int w = 10;
-    public static int h = 22;
+    public static int h = 20;
     public static Transform[,] grid = new Transform[w, h];
     public static int score = 0;
+    public static int line = 0;
 
     public static Vector2 roundVec2 (Vector2 v)
     {
@@ -54,6 +55,7 @@ public class Grid : MonoBehaviour {
             if (grid[x, y] == null)
                 return false;
         score += addscore(10);
+        line++;
         return true;
     }
      
