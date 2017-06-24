@@ -7,6 +7,9 @@ TagManager:
   - nextminos
   - mino
   - emptyobj
+  - dead
+  - hold
+  - holded
   layers:
   - Default
   - TransparentFX

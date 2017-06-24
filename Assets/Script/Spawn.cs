@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour {
 
-    public GameObject[] groups = new GameObject[5];
-    public GameObject[] nextmino = new GameObject[5];
-    public int[] next = new int[2];
+    public GameObject[] groups = new GameObject[7];
+    public GameObject[] nextmino = new GameObject[7];
+    public int[] next = new int[5];
     public int now;
-    public int hold;
     public int nextnum;
 
 	public void SpawnNext () {
@@ -25,7 +24,7 @@ public class Spawn : MonoBehaviour {
             }
         }
         now = next[0];
-        Instantiate(groups[now], transform.position, Quaternion.identity);
+        Instantiate(groups[next[0]], transform.position, Quaternion.identity);
         for (int j = 0; j < 4; j++) 
         {
             next[j] = next[j + 1];
@@ -42,10 +41,6 @@ public class Spawn : MonoBehaviour {
         Instantiate(nextmino[next[0]], new Vector2(15, 15), Quaternion.identity);
         Instantiate(nextmino[next[1]], new Vector2(15, 10), Quaternion.identity);
         Instantiate(nextmino[next[2]], new Vector2(15, 5), Quaternion.identity);
-    }
-    public void Holded(int holding)
-    {
-        hold = holding;
     }
 	
 	void Start () {
